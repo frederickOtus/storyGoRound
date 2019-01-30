@@ -1,4 +1,6 @@
-<tw-storydata name="TheGreatBlight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="7E85DFA1-8BE1-44D1-AF8F-254142380840" zoom="1" format="Snowman" format-version="1.3.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+<tw-storydata name="TheGreatBlight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="7E85DFA1-8BE1-44D1-AF8F-254142380840" zoom="0.25" format="Snowman" format-version="1.3.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+
+
 
 
 
@@ -81,7 +83,9 @@ story.state.inventory_add('pocketlint','Pocket lint','It\'s small and fuzzy',3);
 
 
 
-</script><tw-passagedata pid="1" name="StartingOff" tags="" position="412,187" size="100,100">&lt;em&gt;
+
+
+</script><tw-passagedata pid="1" name="StartingOff" tags="start" position="412,187" size="100,100">&lt;em&gt;
 Greetings Friend,
 
 I hope this letter finds you well. Our endeavors have progressed quickly, and we have need of your time and talents. We&#39;ll be waiting.
@@ -103,7 +107,7 @@ Tucked into the folds of the letter, you find a small, brass key. &lt;% s.invent
 &lt;img src=&quot;http://slackboy.ddns.net/static/letteronfire.gif&quot;&gt;
 
 [[Return to the Kitchen]]
-</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="410,337" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
+</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="410,336" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/eatlettercinnamon.gif&quot;&gt;
 
@@ -114,7 +118,22 @@ The letter is eaten.
 [[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="193,199" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="337,487" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/tableshreddingteeth.gif&quot;&gt;
-</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="487,487" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory" position="410,35" size="100,100">### Inventory
+
+[[search for more to consume]]
+
+[[look over your work]]
+
+[[go to the doctor]]</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="487,487" size="100,100">You lie down on your left side (the ideal position to aid in digestion) and fall into a deep and restful sleep.
+
+During the sleep you dream of many things.
+
+You dream of 
+&lt;br&gt;
+[[hands -&gt; a many fingred dream]]
+&lt;br&gt;
+[[receiving a letter -&gt; StartingOff]]
+&lt;br&gt;
+[[being lost -&gt; a dream without place]]</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory" position="410,35" size="100,100">### Inventory
 
 &lt;% 
 if(s.inventory.length == 0){
@@ -135,4 +154,4 @@ for(var itemid in s.inventory){
 %&gt;
 
 
-&lt;%= s.generateLink(s.currFrame, &quot;Return to story&quot;) %&gt;</tw-passagedata></tw-storydata>
+&lt;%= s.generateLink(s.currFrame, &quot;Return to story&quot;) %&gt;</tw-passagedata><tw-passagedata pid="8" name="search for more to consume" tags="" position="172,495" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="9" name="look over your work" tags="" position="204,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="go to the doctor" tags="" position="322,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="hands" tags="" position="542,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name=" a many fingred dream" tags="" position="667,359" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name=" " tags="" position="672,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name=" a dream without place" tags="" position="680,503" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
