@@ -3,6 +3,8 @@
 
 
 
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//Global variables
 story.state.currFrame = null;
 
@@ -77,6 +79,8 @@ $(window).on('showpassage:after', function(){
 story.state.inventory_add('pocketlint','Pocket lint','It\'s small and fuzzy',3);
 
 
+
+
 </script><tw-passagedata pid="1" name="StartingOff" tags="" position="412,187" size="100,100">&lt;em&gt;
 Greetings Friend,
 
@@ -86,6 +90,8 @@ Yours truly,
 T.H. Renoux
 &lt;/em&gt;
 
+&lt;img src=&quot;http://slackboy.ddns.net/static/smallbrasskey.gif&quot;&gt;
+
 Tucked into the folds of the letter, you find a small, brass key. &lt;% s.inventory_add(&#39;sbrasskey&#39;,&#39;Small brass key&#39;,&#39;It\&#39;s a small brass key&#39;) %&gt;
 
 [[Burn the letter]]
@@ -94,14 +100,21 @@ Tucked into the folds of the letter, you find a small, brass key. &lt;% s.invent
 
 [[Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="2" name="Burn the letter" tags="" position="262,337" size="100,100">This is clearly junk mail. With a snap of your fingers, the letter bursts into flames. You start to turn away, but then you see the faint outline of a mouth form from the letters ashes. It sounds like a screaming child, but the words are the same as the contents of the letter. Junk mailers wouldn&#39;t spring for a minor god, I guess Renoux really did send you a letter.
 
+&lt;img src=&quot;http://slackboy.ddns.net/static/letteronfire.gif&quot;&gt;
+
 [[Return to the Kitchen]]
-</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="409,337" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
+</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="410,337" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
+
+&lt;img src=&quot;http://slackboy.ddns.net/static/eatlettercinnamon.gif&quot;&gt;
 
 The letter is eaten.
 
 [[Return to the kitchen -&gt;Return to the Kitchen]] 
 [[Eat the table -&gt;Eat Table]]
-[[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="193,199" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="337,487" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. </tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="487,487" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory" position="410,35" size="100,100">### Inventory
+[[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="193,199" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="337,487" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
+
+&lt;img src=&quot;http://slackboy.ddns.net/static/tableshreddingteeth.gif&quot;&gt;
+</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="487,487" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory" position="410,35" size="100,100">### Inventory
 
 &lt;% 
 if(s.inventory.length == 0){
