@@ -1,4 +1,4 @@
-<tw-storydata name="TheGreatBlight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="7E85DFA1-8BE1-44D1-AF8F-254142380840" zoom="0.25" format="Snowman" format-version="1.3.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+<tw-storydata name="TheGreatBlight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="7E85DFA1-8BE1-44D1-AF8F-254142380840" zoom="1" format="Snowman" format-version="1.3.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
 
 
 
@@ -7,11 +7,25 @@
 
 
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">//Global variables
+
+
+
+
+
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">//Reset inventory / game variables
+story.state.init_game = function(){
+	story.state.inventory = {};
+	//Preload inventory
+	story.state.inventory_add('pocketlint','Pocket lint','It\'s small and fuzzy',3);
+}
+
+story.state.coming_from_inventory;
+story.state.hide_directives = [];
+story.state.current_flash_messages = [];
+story.state.next_flash_messages = [];
+
+//Global variables
 story.state.currFrame = null;
-
-//Initialize inventory to empty
-story.state.inventory = {};
 
 //functions for manipulating the inventory
 story.state.inventory_add = function(id, name, desc, count){
@@ -46,9 +60,30 @@ story.state.inventory_remove = function(id, count){
 	return false;
 }
 
-
+/*
+This is for my conditional link hider
+-links need to be hidden on the showpassage:after event
+-But I don't want it to trigger everytime, so I create a list of links to toggle and clear it out*/
+$(window).on('showpassage:after', function() {
+	for(var i = 0; i < story.state.hide_directives.length; i++){
+		var d = story.state.hide_directives[i];
+		if(d.hide){
+			$('a[data-passage="' +d.name + '"]').hide();
+		}else{
+			$('a[data-passage="' +d.name + '"]').hide();
+		}
+	}
+	story.state.hide_directives = [];
+});
 
 //Misc Helper functions
+story.state.hide_link_if = function(name, hide){
+	story.state.hide_directives.push({name:name,hide:hide});
+}
+
+story.state.flash = function(html){
+	story.state.next_flash_messages.push(html);	
+}
 
 //Need to evaluate this.passage at runtime
 window.getPassage = function(){
@@ -56,7 +91,8 @@ window.getPassage = function(){
 }
 
 story.state.generateLink = function(pname,txt){ 
-  return "<a onclick='story.show(\"" + pname + "\");'>" + txt + "</a>"; 
+	txt = txt || pname;
+  return("<a onclick='story.show(\"" + pname + "\");'>" + txt + "</a>"); 
 }
 
 
@@ -65,27 +101,37 @@ story.state.generateLink = function(pname,txt){
 $(window).on('showpassage:after', function(){   
 	var passage = window.getPassage();
 	
+	//Echo out any flash messages to the top of the page and then clear out messages, only do this on passages without no-flash tag
+	if(!passage.tags.includes('no-flash') && !story.state.coming_from_inventory){
+		for(var i = 0; i < story.state.current_flash_messages.length; i++){
+				$('#passage').prepend(story.state.current_flash_messages[i]);
+		}//TODO bug with flash messages disappearing when going to inventory
+		story.state.current_flash_messages = story.state.next_flash_messages;
+		story.state.next_flash_messages = [];
+		story.state.coming_from_inventory = false; //TODO set / check the val with event listener
+	}
+	
 	//Saveframe & load inv links if 'no-inventory' not present
 	if(!passage.tags.includes('no-inventory')){
     story.state.currFrame = window.getPassage().name;
-        var rs = "==============================================="  
+        var rs = "<div id='inv-link'>==============================================="  
         rs += "<br/>";
         rs += "<a onclick='story.show(\"Inventory\");'>"
-        rs += "Inventory</a><br/>";
+        rs += "Inventory</a><br/></div>";
         $('#passage').append(rs);
-    }
+	}
+	
 });
 
 
-//Preload inventory
-story.state.inventory_add('pocketlint','Pocket lint','It\'s small and fuzzy',3);
 
 
 
 
 
 
-</script><tw-passagedata pid="1" name="StartingOff" tags="start" position="412,187" size="100,100">&lt;em&gt;
+</script><tw-passagedata pid="1" name="StartingOff" tags="start" position="566,173" size="100,100">&lt;% story.state.init_game(); %&gt;
+&lt;em&gt;
 Greetings Friend,
 
 I hope this letter finds you well. Our endeavors have progressed quickly, and we have need of your time and talents. We&#39;ll be waiting.
@@ -98,16 +144,17 @@ T.H. Renoux
 
 Tucked into the folds of the letter, you find a small, brass key. &lt;% s.inventory_add(&#39;sbrasskey&#39;,&#39;Small brass key&#39;,&#39;It\&#39;s a small brass key&#39;) %&gt;
 
-[[Burn the letter]]
+
+[[Burn the letter]] 
 
 [[Eat the letter]]
 
-[[Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="2" name="Burn the letter" tags="" position="262,337" size="100,100">This is clearly junk mail. With a snap of your fingers, the letter bursts into flames. You start to turn away, but then you see the faint outline of a mouth form from the letters ashes. It sounds like a screaming child, but the words are the same as the contents of the letter. Junk mailers wouldn&#39;t spring for a minor god, I guess Renoux really did send you a letter.
+[[Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="2" name="Burn the letter" tags="" position="396,66" size="100,100">This is clearly junk mail. With a snap of your fingers, the letter bursts into flames. You start to turn away, but then you see the faint outline of a mouth form from the letters ashes. It sounds like a screaming child, but the words are the same as the contents of the letter. Junk mailers wouldn&#39;t spring for a minor god, I guess Renoux really did send you a letter.
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/letteronfire.gif&quot;&gt;
 
 [[Return to the Kitchen]]
-</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="410,336" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
+</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="394,272" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/eatlettercinnamon.gif&quot;&gt;
 
@@ -115,7 +162,7 @@ The letter is eaten.
 
 [[Return to the kitchen -&gt;Return to the Kitchen]] 
 [[Eat the table -&gt;Eat Table]]
-[[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="193,199" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="337,487" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
+[[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="219,141" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="275,434" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/tableshreddingteeth.gif&quot;&gt;
 
@@ -123,17 +170,17 @@ The letter is eaten.
 
 [[look over your work]]
 
-[[go to the doctor]]</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="487,487" size="100,100">You lie down on your left side (the ideal position to aid in digestion) and fall into a deep and restful sleep.
+[[go to the doctor]]</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="532,490" size="100,100">You lie down on your left side (the ideal position to aid in digestion) and fall into a deep and restful sleep.
 
 During the sleep you dream of many things.
 
 You dream of 
 &lt;br&gt;
-[[hands -&gt; a many fingred dream]]
+[[hands -&gt;a many fingred dream]]
 &lt;br&gt;
-[[receiving a letter -&gt; StartingOff]]
+[[receiving a letter -&gt;StartingOff]]
 &lt;br&gt;
-[[being lost -&gt; a dream without place]]</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory" position="410,35" size="100,100">### Inventory
+[[being lost -&gt;a dream without place]]</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory no-flash" position="36,27" size="100,100">### Inventory
 
 &lt;% 
 if(s.inventory.length == 0){
@@ -154,4 +201,23 @@ for(var itemid in s.inventory){
 %&gt;
 
 
-&lt;%= s.generateLink(s.currFrame, &quot;Return to story&quot;) %&gt;</tw-passagedata><tw-passagedata pid="8" name="search for more to consume" tags="" position="172,495" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="9" name="look over your work" tags="" position="204,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="go to the doctor" tags="" position="322,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="hands" tags="" position="542,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name=" a many fingred dream" tags="" position="667,359" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name=" " tags="" position="672,637" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name=" a dream without place" tags="" position="680,503" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+&lt;% s.coming_from_inventory = true; %&gt;
+
+&lt;%= s.generateLink(s.currFrame, &quot;Return to story&quot;) %&gt;</tw-passagedata><tw-passagedata pid="8" name="search for more to consume" tags="" position="124,471" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="9" name="look over your work" tags="" position="166,624" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="10" name="go to the doctor" tags="" position="319,665" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="a many fingred dream" tags="" position="598,647" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="12" name="a dream without place" tags="" position="695,473" size="100,100">&lt;em&gt;drip... drip... drip&lt;/em&gt;
+
+Somthing warm, and viscous runs douwn your head and over your left ear.
+
+&lt;strong&gt;GROSS&lt;/strong&gt;
+ 
+You bolt to your feet and look around and see nothing but a wenge tinted abyss. 
+
+&lt;em&gt;drip&lt;/em&gt;
+
+Another drop lands on your head and you finally look up. Floating avove you is a giagantic, disembodied nose. You stumble back as you see another drop form and your foot slips into the abyss and you starot to fall...
+
+You bolt awake -- perhaps it was just a dream. As you run your hand through your hair, you find a bit of goo behind your left ear.
+
+&lt;% s.inventory_add(&#39;spirit-snot&#39;,&#39;Nostral Ectoplasm&#39;,&#39;Perhaps there was more to that dream than you realized&#39;) %&gt;
+
+[[Return to the Kitchen]] 
+</tw-passagedata></tw-storydata>
