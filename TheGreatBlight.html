@@ -20,6 +20,7 @@
 
 
 
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//Reset inventory / game variables
 story.state.init_game = function(){
 	story.state.inventory = {};
@@ -148,7 +149,8 @@ $(window).on('showpassage:after', function(){
 
 
 
-</script><tw-passagedata pid="1" name="StartingOff" tags="start" position="1500,8" size="100,100">&lt;% story.state.init_game(); %&gt;
+
+</script><tw-passagedata pid="1" name="StartingOff" tags="start" position="1505,24" size="100,100">&lt;% story.state.init_game(); %&gt;
 &lt;em&gt;
 Greetings Friend,
 
@@ -166,12 +168,12 @@ Tucked into the folds of the letter, you find a small, brass key. &lt;% s.invent
 
 [[Eat the letter]]
 
-[[Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="2" name="Burn the letter" tags="" position="1108,148" size="100,100">This is clearly junk mail. With a snap of your fingers, the letter bursts into flames. You start to turn away, but then you see the faint outline of a mouth form from the letter&#39;s ashes. It sounds like a screaming child, but the words are the same as the contents of the letter. Junk mailers wouldn&#39;t spring for a minor god; I guess Renoux really did send you a letter.
+[[Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="2" name="Burn the letter" tags="" position="1106,172" size="100,100">This is clearly junk mail. With a snap of your fingers, the letter bursts into flames. You start to turn away, but then you see the faint outline of a mouth form from the letter&#39;s ashes. It sounds like a screaming child, but the words are the same as the contents of the letter. Junk mailers wouldn&#39;t spring for a minor god; I guess Renoux really did send you a letter.
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/letteronfire.gif&quot;&gt;
 
 [[Return to the Kitchen]]
-</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="1313,85" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
+</tw-passagedata><tw-passagedata pid="3" name="Eat the letter" tags="" position="1260,32" size="100,100">You take out your normal human teeth and attach your paper shredding teeth. Between bites you reflect that the letter has a velvety texture with undertones of cinnamon and sadness.
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/eatlettercinnamon.gif&quot;&gt;
 
@@ -179,6 +181,7 @@ The letter is eaten.
 
 [[Return to the kitchen -&gt;Return to the Kitchen]]
 
+&lt;% s.hide_link_if(&#39;Eat Table&#39;,s.inventory_has(&#39;millobill&#39;)); %&gt;
 [[Eat the table -&gt;Eat Table]]
 
 [[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="995,26" size="100,100">The kitchen is full of bright sunglight gleaming on the brass handles of the cupboards and drawers, contrasting against the dark stained wood. The oven is made of dark iron and contains an inferno. 
@@ -192,7 +195,7 @@ You gaze at the oven for a few satisfying moments before you notice that the flo
 [[Scream. Loudly. Endlessly. -&gt; kitchen scream]]
 
 &lt;% s.hide_link_if(&#39;LubeItUp&#39;,!s.inventory_has(&#39;spirit-snot&#39;)); %&gt;
-[[Lube it up-&gt;LubeItUp]] </tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="1105,285" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
+[[Lube it up-&gt;LubeItUp]] </tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="1117,279" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/tableshreddingteeth.gif&quot;&gt;
 
@@ -200,7 +203,7 @@ You gaze at the oven for a few satisfying moments before you notice that the flo
 
 [[look over your work]]
 
-[[go to the doctor]]</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="1502,232" size="100,100">You lie down on your left side (the ideal position to aid in digestion) and fall into a deep and restful sleep.
+[[go to the doctor]]</tw-passagedata><tw-passagedata pid="6" name="Digest the letter" tags="" position="1497,175" size="100,100">You lie down on your left side (the ideal position to aid in digestion) and fall into a deep and restful sleep.
 
 During the sleep you dream of many things.
 
@@ -258,7 +261,7 @@ That copay is going to hurt, though.
 
 [[Call an ambulance]]
 
-[[Collapse on the floor]]</tw-passagedata><tw-passagedata pid="11" name="a many fingered dream" tags="" position="1607,384" size="100,100">The floor is cool to the touch when you open your eyes in the abyss. 
+[[Collapse on the floor]]</tw-passagedata><tw-passagedata pid="11" name="a many fingered dream" tags="" position="1573,333" size="100,100">The floor is cool to the touch when you open your eyes in the abyss. 
 
 &lt;i&gt;You&#39;ve been here before.&lt;/i&gt; 
 
@@ -301,7 +304,7 @@ To the left, there&#39;s something glinting between two small fingers inching pa
 
 
 
-</tw-passagedata><tw-passagedata pid="12" name="a dream without place" tags="" position="1362,323" size="100,100">&lt;em&gt;drip... drip... drip&lt;/em&gt;
+</tw-passagedata><tw-passagedata pid="12" name="a dream without place" tags="" position="1423,334" size="100,100">&lt;em&gt;drip... drip... drip&lt;/em&gt;
 
 Somthing warm, and viscous runs douwn your head and over your left ear.
 
@@ -326,11 +329,11 @@ You see an open box of cornflakes, a bag of Gold Medal All-Purpose Flour, and a 
 
 [[Knock over the flour]]
 
-[[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="843,251" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
+[[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="870,171" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
 
 Finally, you manage to make contact with what you were looking for: your box of staples. A few mouse feces have built up on top, but the box is still sealed! &lt;% s.inventory_add(&#39;staples&#39;,&#39;Box of staples&#39;,&#39;Find a stapler and shake the world to its foundation.&#39;) %&gt;
 
-[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="15" name=" kitchen scream" tags="" position="985,187" size="100,100">You open your mouth to emit what you imagine will be some hopeless, desolate, inhuman sound. 
+[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="15" name=" kitchen scream" tags="" position="987,172" size="100,100">You open your mouth to emit what you imagine will be some hopeless, desolate, inhuman sound. 
 
 Embarassingly, all you can manage is a tiny squeak.  
 
@@ -345,7 +348,9 @@ You reach into your pockets and pull out the translucent goo, and lather it all 
 
 [[Slide into the oven]]
 
-[[Slide out the door]]</tw-passagedata><tw-passagedata pid="17" name="Slide into the oven" tags="" position="130,46" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="18" name="Slide out the door" tags="" position="329,96" size="100,100">Once you finally manage to turn the doorknob with your slimy fingers, you launch yourself out the door, sliding effortlessly over the grass on your stomach.
+[[Slide out the door]]
+
+[[Slide into someone&#39;s DMs]]</tw-passagedata><tw-passagedata pid="17" name="Slide into the oven" tags="" position="77,130" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="18" name="Slide out the door" tags="" position="329,96" size="100,100">Once you finally manage to turn the doorknob with your slimy fingers, you launch yourself out the door, sliding effortlessly over the grass on your stomach.
 
 Leaving behind a shiny, viscous trail, you slide headfirst into...
 
@@ -355,10 +360,22 @@ Leaving behind a shiny, viscous trail, you slide headfirst into...
 
 [[A portal]]
 
-</tw-passagedata><tw-passagedata pid="19" name="the gap" tags="" position="1589,552" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1460,560" size="100,100">&lt;% s.inventory_add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
+</tw-passagedata><tw-passagedata pid="19" name="the gap" tags="" position="1588,491" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1453,489" size="100,100">&lt;% s.inventory_add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
 
-</tw-passagedata><tw-passagedata pid="21" name="Fuck this nonsense; WAKE UP!" tags="" position="1717,528" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="22" name="Knock over the cornflakes" tags="" position="553,371" size="100,100">
+</tw-passagedata><tw-passagedata pid="21" name="Fuck this nonsense; WAKE UP!" tags="" position="1717,493" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="22" name="Knock over the cornflakes" tags="" position="553,371" size="100,100">
 
 
 
-[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="23" name="Knock over the flour" tags="" position="666,370" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="24" name="Knock over the oats" tags="" position="783,373" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="25" name="Drive to urgent care" tags="" position="811,556" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="Call an ambulance" tags="" position="928,607" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A pit" tags="" position="181,192" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="A portal" tags="" position="464,209" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="23" name="Knock over the flour" tags="" position="666,370" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="24" name="Knock over the oats" tags="" position="783,373" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="25" name="Drive to urgent care" tags="" position="809,611" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="Call an ambulance" tags="" position="927,614" size="100,100">Once arriving at the hospital, you are forced to wait for several minutes before signing a pile of forms while being overseen by a tiny goblin man who only talks in rhyme. Its an overall disconcerting experience.
+
+After you finish, you are wisked back into the ER where a doctor walks up and uses his DOCTOR WISDOM to pronounce you healed.
+
+You aquire HEALTH.
+
+You aquire A BILL FOR ONE MILLION DOLLARS.
+
+You aquire BITING SOCIAL COMMENTARY.
+
+&lt;% s.inventory_add(&#39;millobill&#39;,&#39;A bill for one million dollars&#39;,&#39;Is this a piece of paper that shows that you owe one million dollars or is it currency worth one million dollars? No one knows&#39;) %&gt;
+
+[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A pit" tags="" position="211,249" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="31" name="Slide into someone&#39;s DMs" tags="" position="518,98" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
