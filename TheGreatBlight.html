@@ -1,4 +1,8 @@
-<tw-storydata name="TheGreatBlight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="7E85DFA1-8BE1-44D1-AF8F-254142380840" zoom="1" format="Snowman" format-version="1.3.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+<tw-storydata name="TheGreatBlight" startnode="1" creator="Twine" creator-version="2.2.1" ifid="7E85DFA1-8BE1-44D1-AF8F-254142380840" zoom="0.6" format="Snowman" format-version="1.3.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+
+
+
+
 
 
 
@@ -183,6 +187,10 @@ $(window).on('showpassage:after', function(){
 	
 	story.state.coming_from_inventory = window.getPassage().name == "Inventory";
 });
+
+
+
+
 
 
 
@@ -412,7 +420,7 @@ Leaving behind a shiny, viscous trail, you slide headfirst into...
 
 </tw-passagedata><tw-passagedata pid="19" name="the gap" tags="" position="1588,491" size="100,100">The rough skin on the pads of the fingers scrape at your face as you  push your way into the gap. The finger forest tries to push you off balance, but you lean forward and force your way through. 
 
-All at once the finger-forest draws back and you fall into a small clearing. The light here is tinged with sunset red. The air is cold and humid air. Everything smells like dust. At the center of the clearing, watching you from its perch atop a sandstone boulder, is a raven the size of a two-story building. Its wings and body are bright purple. Its eyes are solid green.
+All at once the finger-forest draws back and you fall into a small clearing. The light here is tinged with sunset red. The air is cold and humid. Everything smells like dust. At the center of the clearing, watching you from its perch atop a sandstone boulder, is a raven the size of a two-story building. Its wings and body are bright purple. Its eyes are solid green.
 
 &lt;i&gt;&quot;Hiya. Good to see you again, amigo.&quot;&lt;/i&gt; quoth the Raven. &lt;i&gt;&quot;Do you remember my riddle? Will you answer it this time? Will you awaken? Or will I send you to a deeper dreaming?&quot;&lt;/i&gt;
 
@@ -442,7 +450,7 @@ You aquire BITING SOCIAL COMMENTARY.
 
 &lt;% s.inventory.add(&#39;millobill&#39;,&#39;A bill for one million dollars&#39;,&#39;Is this a piece of paper that shows that you owe one million dollars or is it currency worth one million dollars? No one knows&#39;) %&gt;
 
-[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A pit" tags="" position="211,249" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="31" name="Slide into someone&#39;s DMs" tags="" position="518,98" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="32" name="InventoryTutorial" tags="" position="266,621" size="100,100">&lt;% story.state.init_game(); %&gt;
+[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="InventoryTutorial" tags="" position="266,621" size="100,100">&lt;% story.state.init_game(); %&gt;
 
 This is a simple tutorial of some of the functions you can use to manipulate inventory. One the story.state object (which is aliased to s in passages) there is an invetory object with three functions:
 
@@ -456,7 +464,7 @@ The inventory link is automatically added to any passage that does not have the 
 
 [[AddingItems]]
 
-[[HavingItems]]</tw-passagedata><tw-passagedata pid="33" name="AddingItems" tags="" position="212,872" size="100,100">&lt;strong&gt;Adding Items&lt;/strong&gt;
+[[HavingItems]]</tw-passagedata><tw-passagedata pid="31" name="AddingItems" tags="" position="212,872" size="100,100">&lt;strong&gt;Adding Items&lt;/strong&gt;
 
 The add fuction takes 5 arguments but 3 are optional:
 &lt;ul&gt;
@@ -491,7 +499,7 @@ s.inventory.add(&#39;repeat&#39;,&#39;Repeated&#39;,&#39;This item is going to a
 
 [[AddingItems]]
 
-[[HavingItems]] </tw-passagedata><tw-passagedata pid="34" name="HavingItems" tags="" position="427,788" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
+[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="427,788" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
 
 Checking if you have an item is very staightforward.
 
@@ -517,7 +525,7 @@ That last example is active on this page. If you don&#39;t see thhe HaveEnoughIt
 
 [[AddingItems]] 
 
-[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="35" name="HaveEnoughItems" tags="" position="428,1003" size="100,100">You had enough repeats to get here
+[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="33" name="HaveEnoughItems" tags="" position="428,1003" size="100,100">You had enough repeats to get here
 5 were just removed.
 
 &lt;code&gt;
@@ -532,7 +540,7 @@ You have &lt;%= s.inventory.num_of(&#39;repeat&#39;) %&gt; Repeats
 
 [[AddingItems]] 
 
-[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="36" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="A pit" tags="" position="211,248" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
+[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="34" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="A pit" tags="" position="171,226" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
 
 Gross. &lt;i&gt;You pocket some eels for later.&lt;/i&gt; &lt;% s.inventory_add(&#39;eels&#39;,&#39;Jellied Eels&#39;,&#39;Ah. Eels. The turds of the ocean.&#39;) %&gt; 
 
@@ -540,4 +548,4 @@ Before you know it, you are sliding back up out of the pit. What a ride! Where d
 
 [[Slide into showbusiness -&gt; showbiz]]&lt;br&gt;
 [[Slide into multi level marketing -&gt; mlm]]&lt;br&gt;
-[[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="38" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="39" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="40" name="Slide into someone&#39;s DMs" tags="" position="549,141" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="41" name="Fall deeper into sleep" tags="" position="1717,643" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="42" name="&quot;Do I know you?&quot;" tags="" position="1412,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="43" name="&quot;I will hear your riddle again.&quot;" tags="" position="1534,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="44" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="45" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="46" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="47" name=" stop sliding" tags="" position="332,396" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="36" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name="Slide into someone&#39;s DMs" tags="" position="537,108" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="39" name="Fall deeper into sleep" tags="" position="1717,643" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="40" name="&quot;Do I know you?&quot;" tags="" position="1412,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="41" name="&quot;I will hear your riddle again.&quot;" tags="" position="1534,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="42" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="43" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="44" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="45" name=" stop sliding" tags="" position="332,396" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
