@@ -27,6 +27,7 @@
 
 
 
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//Reset inventory / game variables
 story.state.init_game = function(){
 	story.state.inventory = new Inventory();
@@ -187,6 +188,7 @@ $(window).on('showpassage:after', function(){
 	
 	story.state.coming_from_inventory = window.getPassage().name == "Inventory";
 });
+
 
 
 
@@ -398,7 +400,7 @@ Embarassingly, all you can manage is a tiny squeak.
 This is not the time for tiny squeaks. 
 This is the time to take ACTION. You ain&#39;t gonna be no Jurassic Park Mosquito! 
 
-[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="715,67" size="100,100">&lt;% s.inventory_remove(&#39;spirit-snot&#39;); %&gt;
+[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="715,67" size="100,100">&lt;% s.inventory.remove(&#39;spirit-snot&#39;); %&gt;
 
 &lt;% s.status[&#39;lubed&#39;] = {name:&quot;Lubed up&quot;,desc:&quot;Your skin glistens. Everything has become a slip&#39;n slide&quot;}; %&gt;
 
@@ -430,7 +432,7 @@ Your reply tells the Raven all it needs to know.
 
 [[&quot;I will hear your riddle again.&quot;]]
 
-[[Laugh. And Laugh. And Laugh. And Laugh.]]</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1453,489" size="100,100">&lt;% s.inventory_add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
+[[Laugh. And Laugh. And Laugh. And Laugh.]]</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1453,489" size="100,100">&lt;% s.inventory.add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
 
 </tw-passagedata><tw-passagedata pid="21" name="Fuck this nonsense; WAKE UP!" tags="" position="1717,493" size="100,100">If only waking up were as easy as sleeping, life would be full of endless awakenings, each drawing us closer and closer toward the sharp clarity of the sunlit world of reality. Instead, we are burried deep beneath the infinite layers of our own imaginings, each weighing nothing, all weighing everything. You know of only one way out of this particular dream.
 
@@ -499,7 +501,7 @@ s.inventory.add(&#39;repeat&#39;,&#39;Repeated&#39;,&#39;This item is going to a
 
 [[AddingItems]]
 
-[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="427,788" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
+[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="450.33333333333337,759.6666666666666" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
 
 Checking if you have an item is very staightforward.
 
@@ -525,7 +527,7 @@ That last example is active on this page. If you don&#39;t see thhe HaveEnoughIt
 
 [[AddingItems]] 
 
-[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="33" name="HaveEnoughItems" tags="" position="428,1003" size="100,100">You had enough repeats to get here
+[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="33" name="HaveEnoughItems" tags="" position="473,953" size="100,100">You had enough repeats to get here
 5 were just removed.
 
 &lt;code&gt;
@@ -538,11 +540,9 @@ You have &lt;%= s.inventory.num_of(&#39;repeat&#39;) %&gt; Repeats
 
 
 
-[[AddingItems]] 
+[[AddingItems]] </tw-passagedata><tw-passagedata pid="34" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="A pit" tags="" position="171,226" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
 
-[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="34" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="A pit" tags="" position="171,226" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
-
-Gross. &lt;i&gt;You pocket some eels for later.&lt;/i&gt; &lt;% s.inventory_add(&#39;eels&#39;,&#39;Jellied Eels&#39;,&#39;Ah. Eels. The turds of the ocean.&#39;) %&gt; 
+Gross. &lt;i&gt;You pocket some eels for later.&lt;/i&gt; &lt;% s.inventory.add(&#39;eels&#39;,&#39;Jellied Eels&#39;,&#39;Ah. Eels. The turds of the ocean.&#39;) %&gt; 
 
 Before you know it, you are sliding back up out of the pit. What a ride! Where do you slide next?
 
