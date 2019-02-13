@@ -22,23 +22,15 @@
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3280ecf86d17d94d4b1090435f239234ce738dc4
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//Reset inventory / game variables
 story.state.init_game = function(){
-	story.state.inventory = new Inventory();
-	story.state.status = {}; // This is still not really put together well, I want to descirbe state of the player, but that maybe should be an expansion of the inventory
+	story.state.inventory = {};
+	story.state.status = {};
 	//Preload inventory
-	story.state.inventory.add('pocketlint','Pocket lint','It\'s small and fuzzy',3); 
-	story.state.coming_from_inventory = false; // 
-	story.state.hide_directives = []; // Used for conditionally hiding links. The instruction for hiding the link is before the link is rendered, so the instruction is stored and executed on passage render
-  story.state.current_flash_messages = []; // Not actually implemented yet, I'm thinking of having a means of displaying a message just on the next page
-  story.state.next_flash_messages = []; // see last comment
+	story.state.inventory_add('pocketlint','Pocket lint','It\'s small and fuzzy',3);
 }
 
-story.state.coming_from_inventory = false;
+story.state.coming_from_inventory;
 story.state.hide_directives = [];
 story.state.current_flash_messages = [];
 story.state.next_flash_messages = [];
@@ -46,78 +38,38 @@ story.state.next_flash_messages = [];
 //Global variables
 story.state.currFrame = null;
 
-//Inventory object
-function Inventory(){
-    var self = this;
-
-    self.pack = {};
-    self.history = {};
-
-
-    self.add = function(id, name, desc, count, allow_repeat){
-        count = count || 1; //optional param, if not defined set to 1
-        allow_repeat || 0; // optional param, if not defined set to 0
-        var loc = window.getPassage().name;
-        /*
-        Inventory is stored as an object with attributes for each item, which tracks it's count
-        To prevent items from getting added multiple times upon revisting nodes we need to
-            -not add an item if coming from inventory
-            -not add if allow_repeat is 0
-        */
-            
-        if(story.state.coming_from_inventory ||
-            (
-                !allow_repeat &&
-                loc in self.history &&
-                self.history[loc].indexOf(id) >= 0)
-        ){
-            return false;
-        }
-        
-      //if in inventory, increment count
-        if(id in self.pack){
-            self.pack[id].count += count;
-        }else{
-            self.pack[id] = {id:id, name:name, desc:desc, count:count };
-        }
-        
-        //if we have gotten here, the item has been added and we should add it to the history
-        if(!(loc in self.history)){
-            self.history[loc] = [id];
-        }else if(self.history[loc].indexOf(id) < 0){
-            self.history[loc].push(id);
-        }
-        return true;
-    }
-
-    self.has = function(id, count){
-        count = count || 1; //optional param, if not defined set to 1
-        if(id in self.pack){
-            return self.pack[id].count >= count;
-        }
-        return false;
-    }
-
-    self.remove = function(id,count) {
-        count = count || 1; //optional param, if not defined set to 1
-        if(self.has(id,count)){
-            self.pack[id].count -= count;
-            if(self.pack[id].count == 0){
-                delete self.pack[id];
-            }
-            return true;
-        }
-        return false;
-    }
-		
-		self.num_of = function(id){
-			if(self.has(id)){
-				return self.pack[id].count;
-			}
-			return 0;
-		}
+//functions for manipulating the inventory
+story.state.inventory_add = function(id, name, desc, count){
+	count = count || 1; //optional param, if not defined set to 1
+	if(id in story.state.inventory){
+		story.state.inventory[id].count += count;
+	}else{
+		story.state.inventory[id] = {id:id, name:name, desc:desc, count:count };
+	}
+	return true;
 }
 
+//count is optionial, checks to see if count # if items in inventory
+story.state.inventory_has = function(id, count){
+	count = count || 1; //optional param, if not defined set to 1
+	if(id in story.state.inventory){
+		return story.state.inventory[id].count >= count;
+	}
+	return false;
+}
+
+//count is optional, defaults to 1
+story.state.inventory_remove = function(id, count){
+	count = count || 1; //optional param, if not defined set to 1
+	if(id in story.state.inventory && story.state.inventory[id].count >= count){
+		story.state.inventory[id].count -= count;
+		if(story.state.inventory[id].count == 0){
+			delete story.state.inventory[id];
+		}
+		return true;
+	}
+	return false;
+}
 
 /*
 This is for my conditional link hider
@@ -180,11 +132,7 @@ $(window).on('showpassage:after', function(){
         rs += "Inventory</a><br/></div>";
         $('#passage').append(rs);
 	}
-	if(!passage.tags.includes('inventory')){
-		story.state.coming_from_inventory = false;
-	}
 	
-	story.state.coming_from_inventory = window.getPassage().name == "Inventory";
 });
 
 
@@ -204,10 +152,6 @@ $(window).on('showpassage:after', function(){
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3280ecf86d17d94d4b1090435f239234ce738dc4
 </script><tw-passagedata pid="1" name="StartingOff" tags="start" position="1505,24" size="100,100">&lt;% story.state.init_game(); %&gt;
 &lt;em&gt;
 Greetings Friend,
@@ -220,7 +164,7 @@ T.H. Renoux
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/smallbrasskey.gif&quot;&gt;
 
-Tucked into the folds of the letter, you find a small, brass key. &lt;% s.inventory.add(&#39;sbrasskey&#39;,&#39;Small brass key&#39;,&#39;It\&#39;s a small brass key&#39;); %&gt;
+Tucked into the folds of the letter, you find a small, brass key. &lt;% s.inventory_add(&#39;sbrasskey&#39;,&#39;Small brass key&#39;,&#39;It\&#39;s a small brass key&#39;); %&gt;
 
 [[Burn the letter]] 
 
@@ -239,7 +183,7 @@ The letter is eaten.
 
 [[Return to the kitchen -&gt;Return to the Kitchen]]
 
-&lt;% s.hide_link_if(&#39;Eat Table&#39;,s.inventory.has(&#39;millobill&#39;)); %&gt;
+&lt;% s.hide_link_if(&#39;Eat Table&#39;,s.inventory_has(&#39;millobill&#39;)); %&gt;
 [[Eat the table -&gt;Eat Table]]
 
 [[Digest the letter]]</tw-passagedata><tw-passagedata pid="4" name="Return to the Kitchen" tags="" position="995,26" size="100,100">The kitchen is full of bright sunglight gleaming on the brass handles of the cupboards and drawers, contrasting against the dark stained wood. The oven is made of dark iron and contains an inferno. 
@@ -252,8 +196,8 @@ You gaze at the oven for a few satisfying moments before you notice that the flo
 
 [[Scream. Loudly. Endlessly. -&gt; kitchen scream]]
 
-&lt;% s.hide_link_if(&#39;LubeItUp&#39;,!s.inventory.has(&#39;spirit-snot&#39;)); %&gt;
-[[Lube it up-&gt;LubeItUp]] </tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="1178,308" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
+&lt;% s.hide_link_if(&#39;LubeItUp&#39;,!s.inventory_has(&#39;spirit-snot&#39;)); %&gt;
+[[Lube it up-&gt;LubeItUp]] </tw-passagedata><tw-passagedata pid="5" name="Eat Table" tags="" position="1117,279" size="100,100">You take out your paper-shredding teeth and attach your table-gnawing teeth. You gnaw on the table until it is a sodden pile of wood shavings, and then sit on the floor and swallow them, one handful at a time. 
 
 &lt;img src=&quot;http://slackboy.ddns.net/static/tableshreddingteeth.gif&quot;&gt;
 
@@ -274,12 +218,12 @@ You dream of
 [[being lost -&gt;a dream without place]]</tw-passagedata><tw-passagedata pid="7" name="Inventory" tags="no-inventory no-flash" position="0,0" size="100,100">### Inventory
 
 &lt;% 
-if(s.inventory.pack.length == 0){
+if(s.inventory.length == 0){
 	print(&quot;Nothing! You have absolutely nothing!&quot;);
 }
 
-for(var itemid in s.inventory.pack){
-    var item = s.inventory.pack[itemid];
+for(var itemid in s.inventory){
+    var item = s.inventory[itemid];
 	var countTxt = &quot;&quot;;
 	if(item.count &gt; 1){
 		countTxt = &quot;(&quot; + parseInt(item.count) + &quot;x)&quot;;
@@ -298,6 +242,8 @@ for(var statusid in s.status){
 	print(s.status[statusid].name + &quot;: &quot; + s.status[statusid].desc + &quot;&lt;br/&gt;&quot;);
 }
 %&gt;
+
+&lt;% s.coming_from_inventory = true; %&gt;
 
 &lt;%= s.generateLink(s.currFrame, &quot;Return to story&quot;) %&gt;</tw-passagedata><tw-passagedata pid="8" name="search for more to consume" tags="" position="1310,488" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="9" name="look over your work" tags="" position="1103,450" size="100,100">&lt;b&gt;Congratulations!&lt;/b&gt;
 
@@ -374,7 +320,7 @@ Another drop lands on your head and you finally look up. Floating avove you is a
 
 You bolt awake -- perhaps it was just a dream. As you run your hand through your hair, you find a bit of goo behind your left ear.
 
-&lt;% s.inventory.add(&#39;spirit-snot&#39;,&#39;Nostral Ectoplasm&#39;,&#39;Perhaps there was more to that dream than you realized&#39;) %&gt;
+&lt;% s.inventory_add(&#39;spirit-snot&#39;,&#39;Nostral Ectoplasm&#39;,&#39;Perhaps there was more to that dream than you realized&#39;) %&gt;
 
 [[Return to the Kitchen]] 
 </tw-passagedata><tw-passagedata pid="13" name=" kitchen cupboard" tags="" position="709,222" size="100,100">With some effort, you manage to lean over and grab onto the cold granite countertop. Fingers outstretched, you claw at the cupboard door until you manage to pry it open wide enough to stick a finger inside and fling the door open all the way. You hid it in here somewhere...
@@ -387,7 +333,7 @@ You see an open box of cornflakes, a bag of Gold Medal All-Purpose Flour, and a 
 
 [[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="870,171" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
 
-Finally, you manage to make contact with what you were looking for: your box of staples. A few mouse feces have built up on top, but the box is still sealed! &lt;% s.inventory.add(&#39;staples&#39;,&#39;Box of staples&#39;,&#39;Find a stapler and shake the world to its foundation.&#39;) %&gt;
+Finally, you manage to make contact with what you were looking for: your box of staples. A few mouse feces have built up on top, but the box is still sealed! &lt;% s.inventory_add(&#39;staples&#39;,&#39;Box of staples&#39;,&#39;Find a stapler and shake the world to its foundation.&#39;) %&gt;
 
 [[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="15" name=" kitchen scream" tags="" position="987,172" size="100,100">You open your mouth to emit what you imagine will be some hopeless, desolate, inhuman sound. 
 
@@ -396,11 +342,7 @@ Embarassingly, all you can manage is a tiny squeak.
 This is not the time for tiny squeaks. 
 This is the time to take ACTION. You ain&#39;t gonna be no Jurassic Park Mosquito! 
 
-<<<<<<< HEAD
 [[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="715,67" size="100,100">&lt;% s.inventory_remove(&#39;spirit-snot&#39;); %&gt;
-=======
-[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="715,68" size="100,100">&lt;% s.inventory.remove(&#39;spirit-snot&#39;); %&gt;
->>>>>>> 3280ecf86d17d94d4b1090435f239234ce738dc4
 
 &lt;% s.status[&#39;lubed&#39;] = {name:&quot;Lubed up&quot;,desc:&quot;Your skin glistens. Everything has become a slip&#39;n slide&quot;}; %&gt;
 
@@ -420,7 +362,6 @@ Leaving behind a shiny, viscous trail, you slide headfirst into...
 
 [[A portal]]
 
-<<<<<<< HEAD
 </tw-passagedata><tw-passagedata pid="19" name="the gap" tags="" position="1588,491" size="100,100">The rough skin on the pads of the fingers scrape at your face as you  push your way into the gap. The finger forest tries to push you off balance, but you lean forward and force your way through. 
 
 All at once the finger-forest draws back and you fall into a small clearing. The light here is tinged with sunset red. The air is cold and humid air. Everything smells like dust. At the center of the clearing, watching you from its perch atop a sandstone boulder, is a raven the size of a two-story building. Its wings and body are bright purple. Its eyes are solid green.
@@ -430,9 +371,6 @@ All at once the finger-forest draws back and you fall into a small clearing. The
 Your reply tells the Raven all it needs to know.
 
 [[&quot;Do I know you?&quot;]]
-=======
-</tw-passagedata><tw-passagedata pid="19" name="the gap" tags="" position="1588,491" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1453,489" size="100,100">&lt;% s.inventory.add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
->>>>>>> 3280ecf86d17d94d4b1090435f239234ce738dc4
 
 [[&quot;I will hear your riddle again.&quot;]]
 
@@ -454,99 +392,8 @@ You aquire A BILL FOR ONE MILLION DOLLARS.
 
 You aquire BITING SOCIAL COMMENTARY.
 
-&lt;% s.inventory.add(&#39;millobill&#39;,&#39;A bill for one million dollars&#39;,&#39;Is this a piece of paper that shows that you owe one million dollars or is it currency worth one million dollars? No one knows&#39;) %&gt;
+&lt;% s.inventory_add(&#39;millobill&#39;,&#39;A bill for one million dollars&#39;,&#39;Is this a piece of paper that shows that you owe one million dollars or is it currency worth one million dollars? No one knows&#39;) %&gt;
 
-[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A pit" tags="" position="211,249" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="31" name="Slide into someone&#39;s DMs" tags="" position="518,98" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="32" name="InventoryTutorial" tags="" position="266,621" size="100,100">&lt;% story.state.init_game(); %&gt;
-
-This is a simple tutorial of some of the functions you can use to manipulate inventory. One the story.state object (which is aliased to s in passages) there is an invetory object with three functions:
-
--add
--has
--remove
-
-They are pretty straight forward. Before going forward, it&#39;s worth checking the status of your so you can tell if items have been added.
-
-The inventory link is automatically added to any passage that does not have the tag &#39;no-inventory&#39;.
-
-[[AddingItems]]
-
-[[HavingItems]]</tw-passagedata><tw-passagedata pid="33" name="AddingItems" tags="" position="212,872" size="100,100">&lt;strong&gt;Adding Items&lt;/strong&gt;
-
-The add fuction takes 5 arguments but 3 are optional:
-&lt;ul&gt;
-&lt;li&gt;id: the identifier for the object you&#39;ll use in code&lt;/li&gt;
-&lt;li&gt;name: a human readable name for it&lt;/li&gt;
-&lt;li&gt;description: a description that displays on the inventory page&lt;/li&gt;
-&lt;li&gt;count: (defaults to 1) ammount of inventory added&lt;/li&gt;
-&lt;li&gt;allow_repeats: (default to false) By default, returning to the page will not add the object again.
-&lt;/ul&gt;
-
-Two quirks: returning from the inventory does not count as a repeat and if you add a second copy of an item, it&#39;s description is ignored
-
-Some examples (these are executing on this page, so check your inventory):
-&lt;code&gt;
-s.inventory.add(&#39;basic-item&#39;, &#39;Boring item&#39;, &#39;Its boring yo&#39;);
-s.inventory.add(&#39;basic-item&#39;, &#39;This name ignored&#39;,&#39;this too&#39;);
-//Remember: adding the same item will the second instance&#39;s info
-
-s.inventory.add(&#39;bundle&#39;,&#39;Some rocks&#39;,&#39;All 10 added at once&#39;,10);
-
-s.inventory.add(&#39;repeat&#39;,&#39;Repeated&#39;,&#39;This item is going to added everytime the AddingItems passage is read&#39;,1,1);
-&lt;/code&gt;
-
-&lt;%
-s.inventory.add(&#39;basic-item&#39;, &#39;Boring item&#39;, &#39;Its boring yo&#39;);
-s.inventory.add(&#39;basic-item&#39;, &#39;This name ignored&#39;,&#39;this too&#39;);
-
-s.inventory.add(&#39;bundle&#39;,&#39;Some rocks&#39;,&#39;All 10 added at once&#39;,10);
-
-s.inventory.add(&#39;repeat&#39;,&#39;Repeated&#39;,&#39;This item is going to added everytime the AddingItems passage is read&#39;,1,1);
-%&gt;
-
-[[AddingItems]]
-
-[[HavingItems]] </tw-passagedata><tw-passagedata pid="34" name="HavingItems" tags="" position="427,788" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
-
-Checking if you have an item is very staightforward.
-
-&lt;code&gt;
-s.inventory.has(&#39;repeat&#39;);
-s.inventory.has(&#39;repeat&#39;,5); //only true if you have 5
-
-s.inventory.num_of(&#39;repeat&#39;); //get number of objects with id repeat
-&lt;/code&gt;
-
-You have &lt;%= s.inventory.num_of(&#39;repeat&#39;) %&gt; Repeats
-
-Hiding links under conditions:
-
-&lt;code&gt;
-s.hide_link_if(&#39;HaveEnoughItems&#39;,!s.inventory.has(&#39;repeat&#39;,5));
-//Hide&#39;s the link to the HaveEnoughItems passage if the there aren&#39;t 5 items with the repeat id
-&lt;/code&gt;
-
-That last example is active on this page. If you don&#39;t see thhe HaveEnoughItems link, navigate to the AddingItems page a few times.
-
-&lt;% s.hide_link_if(&#39;HaveEnoughItems&#39;,!s.inventory.has(&#39;repeat&#39;,5)); %&gt;
-
-[[AddingItems]] 
-
-[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="35" name="HaveEnoughItems" tags="" position="428,1003" size="100,100">You had enough repeats to get here
-5 were just removed.
-
-&lt;code&gt;
-s.inventory.remove(&#39;repeat&#39;,5);
-&lt;/code&gt;
-
-&lt;% s.inventory.remove(&#39;repeat&#39;,5); %&gt;
-
-You have &lt;%= s.inventory.num_of(&#39;repeat&#39;) %&gt; Repeats
-
-
-
-[[AddingItems]] 
-
-<<<<<<< HEAD
 [[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A pit" tags="" position="211,248" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
 
 Gross. &lt;i&gt;You pocket some eels for later.&lt;/i&gt; &lt;% s.inventory_add(&#39;eels&#39;,&#39;Jellied Eels&#39;,&#39;Ah. Eels. The turds of the ocean.&#39;) %&gt; 
@@ -556,6 +403,3 @@ Before you know it, you are sliding back up out of the pit. What a ride! Where d
 [[Slide into showbusiness -&gt; showbiz]]&lt;br&gt;
 [[Slide into multi level marketing -&gt; mlm]]&lt;br&gt;
 [[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="29" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="31" name="Slide into someone&#39;s DMs" tags="" position="549,141" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="32" name="Fall deeper into sleep" tags="" position="1717,643" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="33" name="&quot;Do I know you?&quot;" tags="" position="1412,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="34" name="&quot;I will hear your riddle again.&quot;" tags="" position="1534,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="36" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name=" stop sliding" tags="" position="332,396" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
-=======
-[[HavingItems]]</tw-passagedata></tw-storydata>
->>>>>>> 3280ecf86d17d94d4b1090435f239234ce738dc4
