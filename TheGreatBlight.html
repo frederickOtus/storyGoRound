@@ -28,6 +28,7 @@
 
 
 
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//Reset inventory / game variables
 story.state.init_game = function(){
 	story.state.inventory = new Inventory();
@@ -188,6 +189,7 @@ $(window).on('showpassage:after', function(){
 	
 	story.state.coming_from_inventory = window.getPassage().name == "Inventory";
 });
+
 
 
 
@@ -389,7 +391,7 @@ You see an open box of cornflakes, a bag of Gold Medal All-Purpose Flour, and a 
 
 [[Knock over the flour]]
 
-[[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="870,171" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
+[[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="870,172.66666666666666" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
 
 Finally, you manage to make contact with what you were looking for: your box of staples. A few mouse feces have built up on top, but the box is still sealed! &lt;% s.inventory.add(&#39;staples&#39;,&#39;Box of staples&#39;,&#39;Find a stapler and shake the world to its foundation.&#39;) %&gt;
 
@@ -400,7 +402,7 @@ Embarassingly, all you can manage is a tiny squeak.
 This is not the time for tiny squeaks. 
 This is the time to take ACTION. You ain&#39;t gonna be no Jurassic Park Mosquito! 
 
-[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="715,67" size="100,100">&lt;% s.inventory.remove(&#39;spirit-snot&#39;); %&gt;
+[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="716.6666666666666,67" size="100,100">&lt;% s.inventory.remove(&#39;spirit-snot&#39;); %&gt;
 
 &lt;% s.status[&#39;lubed&#39;] = {name:&quot;Lubed up&quot;,desc:&quot;Your skin glistens. Everything has become a slip&#39;n slide&quot;}; %&gt;
 
@@ -501,7 +503,7 @@ s.inventory.add(&#39;repeat&#39;,&#39;Repeated&#39;,&#39;This item is going to a
 
 [[AddingItems]]
 
-[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="450.33333333333337,759.6666666666666" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
+[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="450,759" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
 
 Checking if you have an item is very staightforward.
 
@@ -548,4 +550,13 @@ Before you know it, you are sliding back up out of the pit. What a ride! Where d
 
 [[Slide into showbusiness -&gt; showbiz]]&lt;br&gt;
 [[Slide into multi level marketing -&gt; mlm]]&lt;br&gt;
-[[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="36" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name="Slide into someone&#39;s DMs" tags="" position="537,108" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="39" name="Fall deeper into sleep" tags="" position="1717,643" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="40" name="&quot;Do I know you?&quot;" tags="" position="1412,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="41" name="&quot;I will hear your riddle again.&quot;" tags="" position="1534,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="42" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="43" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="44" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="45" name=" stop sliding" tags="" position="332,396" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="36" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name="Slide into someone&#39;s DMs" tags="" position="537,108" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="39" name="Fall deeper into sleep" tags="" position="1717,643" size="100,100">After passing deeper into the dreamscape, you encounter a terrifying beast.  It appears to have hundreds of dog faces and undulates like a boiling sauce. As you stare at it, you think you can catch a hint of something familiar but as soon as you try to figure out what it reminds you of, it is gone, replaced by yet another boiling dog face.
+
+You have encountered THE DEEP DREAM.
+
+[[Worship THE DEEP DREAM]]
+[[Vanquish THE DEEP DREAM]]
+[[Flirt with THE DEEP DREAM]]
+[[]]</tw-passagedata><tw-passagedata pid="40" name="&quot;Do I know you?&quot;" tags="" position="1412,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="41" name="&quot;I will hear your riddle again.&quot;" tags="" position="1534,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="42" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="43" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="44" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="45" name=" stop sliding" tags="" position="332,396" size="100,100">You are unable to stop sliding. With dread, you realize those educational films from the 50s were right the whole time.
+
+[[slip slip slip into the future]]</tw-passagedata><tw-passagedata pid="46" name="slip slip slip into the future" tags="" position="448.6666666666667,514.3333333333334" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
