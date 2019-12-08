@@ -28,9 +28,6 @@
 
 
 
-
-
-
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">//Reset inventory / game variables
 story.state.init_game = function(){
 	story.state.inventory = new Inventory();
@@ -191,9 +188,6 @@ $(window).on('showpassage:after', function(){
 	
 	story.state.coming_from_inventory = window.getPassage().name == "Inventory";
 });
-
-
-
 
 
 
@@ -395,7 +389,7 @@ You see an open box of cornflakes, a bag of Gold Medal All-Purpose Flour, and a 
 
 [[Knock over the flour]]
 
-[[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="870,172" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
+[[Knock over the oats]]</tw-passagedata><tw-passagedata pid="14" name=" kitchen drawer" tags="" position="870,171" size="100,100">One drawer is at the edge of your grasp. Your spindly fingers dart across a few pencils inside, over an old bottle of elmers glue. 
 
 Finally, you manage to make contact with what you were looking for: your box of staples. A few mouse feces have built up on top, but the box is still sealed! &lt;% s.inventory.add(&#39;staples&#39;,&#39;Box of staples&#39;,&#39;Find a stapler and shake the world to its foundation.&#39;) %&gt;
 
@@ -406,7 +400,7 @@ Embarassingly, all you can manage is a tiny squeak.
 This is not the time for tiny squeaks. 
 This is the time to take ACTION. You ain&#39;t gonna be no Jurassic Park Mosquito! 
 
-[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="716,67" size="100,100">&lt;% s.inventory.remove(&#39;spirit-snot&#39;); %&gt;
+[[Return to the Kitchen]] </tw-passagedata><tw-passagedata pid="16" name="LubeItUp" tags="" position="715,67" size="100,100">&lt;% s.inventory_remove(&#39;spirit-snot&#39;); %&gt;
 
 &lt;% s.status[&#39;lubed&#39;] = {name:&quot;Lubed up&quot;,desc:&quot;Your skin glistens. Everything has become a slip&#39;n slide&quot;}; %&gt;
 
@@ -438,7 +432,7 @@ Your reply tells the Raven all it needs to know.
 
 [[&quot;I will hear your riddle again.&quot;]]
 
-[[Laugh. And Laugh. And Laugh. And Laugh.]]</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1453,489" size="100,100">&lt;% s.inventory.add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
+[[Laugh. And Laugh. And Laugh. And Laugh.]]</tw-passagedata><tw-passagedata pid="20" name="explore fingers" tags="" position="1453,489" size="100,100">&lt;% s.inventory_add(&#39;spyglass&#39;, &#39;Small Gold Spyglass&#39;, &#39;Is it only the damned who know what lies unseen on this plane?&#39;) %&gt;
 
 </tw-passagedata><tw-passagedata pid="21" name="Fuck this nonsense; WAKE UP!" tags="" position="1717,493" size="100,100">If only waking up were as easy as sleeping, life would be full of endless awakenings, each drawing us closer and closer toward the sharp clarity of the sunlit world of reality. Instead, we are burried deep beneath the infinite layers of our own imaginings, each weighing nothing, all weighing everything. You know of only one way out of this particular dream.
 
@@ -446,7 +440,9 @@ Your reply tells the Raven all it needs to know.
 
 
 
-[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="23" name="Knock over the flour" tags="" position="666,370" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="24" name="Knock over the oats" tags="" position="783,373" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="25" name="Drive to urgent care" tags="" position="809,611" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="Call an ambulance" tags="" position="927,614" size="100,100">Once arriving at the hospital, you are forced to wait for several minutes before signing a pile of forms while being overseen by a tiny goblin man who only talks in rhyme. Its an overall disconcerting experience.
+[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="23" name="Knock over the flour" tags="" position="666,370" size="100,100">You punch the bag with your fist, filling the air with flour, which ejects a small rectangular object. It sails toward you in a slow arc through the hazy air.
+
+[[Catch it -&gt; catch magic book]]</tw-passagedata><tw-passagedata pid="24" name="Knock over the oats" tags="" position="783,373" size="100,100">[[Try Again-&gt; kitchen cupboard]] </tw-passagedata><tw-passagedata pid="25" name="Drive to urgent care" tags="" position="809,611" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="26" name="Call an ambulance" tags="" position="927,614" size="100,100">Once arriving at the hospital, you are forced to wait for several minutes before signing a pile of forms while being overseen by a tiny goblin man who only talks in rhyme. Its an overall disconcerting experience.
 
 After you finish, you are wisked back into the ER where a doctor walks up and uses his DOCTOR WISDOM to pronounce you healed.
 
@@ -458,7 +454,7 @@ You aquire BITING SOCIAL COMMENTARY.
 
 &lt;% s.inventory.add(&#39;millobill&#39;,&#39;A bill for one million dollars&#39;,&#39;Is this a piece of paper that shows that you owe one million dollars or is it currency worth one million dollars? No one knows&#39;) %&gt;
 
-[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="InventoryTutorial" tags="" position="136,844.3333333333334" size="100,100">&lt;% story.state.init_game(); %&gt;
+[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="27" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="28" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="30" name="InventoryTutorial" tags="" position="266,621" size="100,100">&lt;% story.state.init_game(); %&gt;
 
 This is a simple tutorial of some of the functions you can use to manipulate inventory. One the story.state object (which is aliased to s in passages) there is an invetory object with three functions:
 
@@ -472,7 +468,7 @@ The inventory link is automatically added to any passage that does not have the 
 
 [[AddingItems]]
 
-[[HavingItems]]</tw-passagedata><tw-passagedata pid="31" name="AddingItems" tags="" position="103.66666666666666,1050.3333333333333" size="100,100">&lt;strong&gt;Adding Items&lt;/strong&gt;
+[[HavingItems]]</tw-passagedata><tw-passagedata pid="31" name="AddingItems" tags="" position="212,872" size="100,100">&lt;strong&gt;Adding Items&lt;/strong&gt;
 
 The add fuction takes 5 arguments but 3 are optional:
 &lt;ul&gt;
@@ -507,7 +503,7 @@ s.inventory.add(&#39;repeat&#39;,&#39;Repeated&#39;,&#39;This item is going to a
 
 [[AddingItems]]
 
-[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="331.66666666666663,860.6666666666666" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
+[[HavingItems]] </tw-passagedata><tw-passagedata pid="32" name="HavingItems" tags="" position="427,788" size="100,100">&lt;strong&gt;Having Items&lt;/strong&gt;
 
 Checking if you have an item is very staightforward.
 
@@ -533,7 +529,7 @@ That last example is active on this page. If you don&#39;t see thhe HaveEnoughIt
 
 [[AddingItems]] 
 
-[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="33" name="HaveEnoughItems" tags="" position="318,1044.6666666666667" size="100,100">You had enough repeats to get here
+[[HaveEnoughItems]]</tw-passagedata><tw-passagedata pid="33" name="HaveEnoughItems" tags="" position="428,1003" size="100,100">You had enough repeats to get here
 5 were just removed.
 
 &lt;code&gt;
@@ -546,51 +542,21 @@ You have &lt;%= s.inventory.num_of(&#39;repeat&#39;) %&gt; Repeats
 
 
 
-[[AddingItems]] </tw-passagedata><tw-passagedata pid="34" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="A pit" tags="" position="171,226" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
+[[AddingItems]] 
 
-Gross. &lt;i&gt;You pocket some eels for later.&lt;/i&gt; &lt;% s.inventory.add(&#39;eels&#39;,&#39;Jellied Eels&#39;,&#39;Ah. Eels. The turds of the ocean.&#39;) %&gt; 
+[[Return Home|Return to the Kitchen]]</tw-passagedata><tw-passagedata pid="34" name="Collapse on the floor" tags="" position="1039,613" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="A pit" tags="" position="171,226" size="100,100">You slide headfirst into a pit full of jellied eels. You even get some in your mouth. &lt;% s.status[&#39;eelstink&#39;] = {name:&quot;Eel stink&quot;,desc:&quot;You smell like eels. Some find your stink revolting. Some find it irresistable...&quot;}; %&gt;
+
+Gross. &lt;i&gt;You pocket some eels for later.&lt;/i&gt; &lt;% s.inventory_add(&#39;eels&#39;,&#39;Jellied Eels&#39;,&#39;Ah. Eels. The turds of the ocean.&#39;) %&gt; 
 
 Before you know it, you are sliding back up out of the pit. What a ride! Where do you slide next?
 
 [[Slide into showbusiness -&gt; showbiz]]&lt;br&gt;
 [[Slide into multi level marketing -&gt; mlm]]&lt;br&gt;
-[[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="36" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name="Slide into someone&#39;s DMs" tags="" position="538,139" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="39" name="Fall deeper into sleep" tags="" position="1889.6666666666667,481" size="100,100">After passing deeper into the dreamscape, you encounter a terrifying beast.  It appears to have hundreds of dog faces and undulates like a boiling sauce. As you stare at it, you think you can catch a hint of something familiar but as soon as you try to figure out what it reminds you of, it is gone, replaced by yet another boiling dog face.
+[[Hell. This has gone far enough. Your life is sliding out of control. -&gt; stop sliding]]</tw-passagedata><tw-passagedata pid="36" name="A bush" tags="" position="323,250" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="A portal" tags="" position="434,248" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="38" name="Slide into someone&#39;s DMs" tags="" position="537,108" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="39" name="Fall deeper into sleep" tags="" position="1717,643" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="40" name="&quot;Do I know you?&quot;" tags="" position="1412,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="41" name="&quot;I will hear your riddle again.&quot;" tags="" position="1534,755" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="42" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="43" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="44" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="45" name=" stop sliding" tags="" position="332,396" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="46" name=" catch magic book" tags="" position="666,520" size="100,100">You easily catch the object with your outstretched hand and scrutinize it in the dim light. It&#39;s a book. &quot;Yasper&#39;s Spelling Book for Beginner Magicians.&quot;
 
-You have encountered THE DEEP DREAM.
+[[You open the book -&gt; open spelling book ]]</tw-passagedata><tw-passagedata pid="47" name=" open spelling book " tags="" position="666,670" size="100,100">The amber fluid is at your waist now, your feet are firmly affixed to the floor. There is only one way out.
 
-
-[[Worship THE DEEP DREAM]]
-
-[[Vanquish THE DEEP DREAM]]
-
-[[Flirt with THE DEEP DREAM]]</tw-passagedata><tw-passagedata pid="40" name="&quot;Do I know you?&quot;" tags="" position="1512,733.3333333333334" size="100,100">You stare at the purple raven and wonder if you look as moronic as you feel. Too late, you realize your mouth has been hanging open and you snap it shut, your tongue sandpapery in your now-much-too-dry mouth. 
-
-&quot;We&#39;ve...met before?&quot; you ask. 
-
-&lt;i&gt;&quot;But of course, compadre!&quot;&lt;/i&gt; smirks the Raven. &lt;i&gt;&quot;We&#39;ve met many times, on many planes. Now, do you want to hear my riddle again or what?&quot;&lt;/i&gt;
-
-You&#39;re not good at riddles, but &lt;i&gt;a deeper dreaming&lt;/i&gt; sounds a little like creepytown. 
-
-&quot;What happens if I try the riddle and fail?&quot; 
-
-The raven blinks. &lt;i&gt;&quot;Curtains. Audi 5000.&quot;&lt;/i&gt;
-
-&quot;So, I&#39;ll wake up?&quot;
-
-The raven blinks. 
-
-Curtains? That sounds bad. Audi 5000? That sounds pretty benign. 
-
-[[&quot;I will hear your riddle again.&quot;]]
-
-[[&quot;I suck at riddles. Send me to deeper dreaming.&quot;]]</tw-passagedata><tw-passagedata pid="41" name="&quot;I will hear your riddle again.&quot;" tags="" position="1377.3333333333333,703.3333333333334" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="42" name="Laugh. And Laugh. And Laugh. And Laugh." tags="" position="1662,759" size="100,100">Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;Hahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;p&gt;&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;hahaHahahahahaha&lt;i&gt;HAhaHAHaHAhhaAH&lt;/i&gt;&lt;/p&gt;</tw-passagedata><tw-passagedata pid="43" name=" showbiz" tags="" position="61,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="44" name=" mlm" tags="" position="195,398" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="45" name=" stop sliding" tags="" position="332,396" size="100,100">You are unable to stop sliding. With dread, you realize those educational films from the 50s were right the whole time.
-
-[[slip slip slip into the future]]</tw-passagedata><tw-passagedata pid="46" name="slip slip slip into the future" tags="" position="448,514" size="100,100">&lt;i&gt;FWHUMP!&lt;/i&gt; 
-
-You slide straight into a brick wall, which puts an abrupt and painful stop to your slip-slopping. Hours later, when you blearily blink yourself back into the land of the living, you find yourself in the land of the dead. Everything is grey and dusty. Buildings are crumbling. The silence is oppressive. You assume you&#39;ve stumbled upon some post-apocalyptic landscape. What&#39;s going on here? 
-
-[[Explore this Brave New Ashen Wasteland]]
-
-[[Curl into the fetal position and weep openly]]
-
-</tw-passagedata><tw-passagedata pid="47" name="Explore this Brave New Ashen Wasteland" tags="" position="373,649" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="48" name="Curl into the fetal position and weep openly" tags="" position="523,649" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="49" name="&quot;I suck at riddles. Send me to deeper dreaming.&quot;" tags="" position="1702,936.6666666666669" size="100,100">[[Fall deeper into sleep]]</tw-passagedata><tw-passagedata pid="50" name="Worship THE DEEP DREAM" tags="" position="1823,780.0000000000002" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="51" name="Vanquish THE DEEP DREAM" tags="" position="1911.3333333333333,652.6666666666667" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="52" name="Flirt with THE DEEP DREAM" tags="" position="2028,612.6666666666666" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Cast fireball | kitchen fireball ]]
+[[Cast summon creature | kitchen creature ]]
+[[Cast blinding light | kitchen blinding light]]
+[[Cast invisibility | kitchen invisibility]]</tw-passagedata><tw-passagedata pid="48" name=" kitchen fireball " tags="" position="481,821.3333333333334" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="49" name=" kitchen creature " tags="" position="591,820" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="50" name=" kitchen blinding light" tags="" position="741,820" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="51" name=" kitchen invisibility" tags="" position="891,820" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
